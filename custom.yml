@@ -1,0 +1,27 @@
+feeds:
+  - name: custom
+    path: ../feeds_dir/custom
+  - name: helloworld
+    uri: https://github.com/fw876/helloworld.git
+    branch: master
+  - name: openclash
+    uri: https://github.com/vernesong/OpenClash.git
+    branch: master
+packages:
+  - luci-app-ssr-plus
+  - luci-app-openclash
+  - dnsmasq-full
+  - luci-app-commands
+  - luci-app-wireguard
+  - wireguard
+  - wireguard-tools
+  - luci-app-ttyd
+  - default-settings
+
+diffconfig: |
+  CONFIG_PACKAGE_wpad-basic=n
+  CONFIG_PACKAGE_wpad=n
+  CONFIG_PACKAGE_dnsmasq=n
+  CONFIG_LUCI_LANG_zh_Hans=y
+  CONFIG_BUSYBOX_CUSTOM=y
+  CONFIG_BUSYBOX_CONFIG_FEATURE_FLOAT_SLEEP=y

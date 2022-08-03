@@ -12,7 +12,7 @@ if [ ! -n "$ui" ]; then
         ui=true
 fi
 
-cd /home/runner/work/build-gl.inet/build-gl.inet/
+cd /home/runner/work/build-gl.inet-openwrt/build-gl.inet-openwrt/
 
 echo "复制自定义插件源码目录至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/

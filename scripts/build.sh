@@ -36,7 +36,7 @@ echo "更新插件源码"
 ./scripts/gen_config.py $profile glinet_depends custom
 
 echo "克隆glinet私有软件包"
-git clone https://github.com/gl-inet/glinet4.x.git /workdir/gl-infra-builder/glinet
+git clone https://github.com/qqhpc/glinet4.x.git /workdir/gl-infra-builder/glinet
 
 echo "下载安装feeds"
 ./scripts/feeds update -a 

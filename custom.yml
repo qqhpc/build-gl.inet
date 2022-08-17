@@ -2,7 +2,7 @@ feeds:
   - name: custom
     path: ../feeds_dir/custom
   - name: helloworld
-    uri: https://github.com/fw876/helloworld.git
+    uri: https://github.com/qqhpc/helloworld.git
     branch: master
   - name: openclash
     uri: https://github.com/vernesong/OpenClash.git

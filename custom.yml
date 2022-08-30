@@ -16,7 +16,6 @@ packages:
   - wireguard
   - wireguard-tools
   - luci-app-ttyd
-  - default-settings
 
 diffconfig: |
   CONFIG_PACKAGE_wpad-basic=n

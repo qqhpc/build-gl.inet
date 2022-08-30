@@ -33,7 +33,7 @@ echo "进入目标目录"
 cd wlan-ap/openwrt
 
 echo "更新插件源码"
-./scripts/gen_config.py $profile glinet_depends luci custom
+./scripts/gen_config.py $profile glinet_depends custom
 
 echo "克隆glinet私有软件包"
 git clone https://github.com/qqhpc/glinet4.x.git /workdir/gl-infra-builder/glinet

@@ -6,7 +6,7 @@ feeds:
     branch: master
   - name: openclash
     uri: https://github.com/qqhpc/OpenClash.git
-    branch: master
+    branch: dev
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash

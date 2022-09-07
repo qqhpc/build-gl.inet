@@ -5,7 +5,7 @@ feeds:
     uri: https://github.com/qqhpc/fw876-helloworld.git
     branch: master
   - name: openclash
-    uri: https://github.com/qqhpc/OpenClash.git
+    uri: https://github.com/qqhpc/vernesong-OpenClash.git
     branch: dev
 packages:
   - luci-app-ssr-plus

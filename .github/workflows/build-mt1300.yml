@@ -54,7 +54,7 @@ jobs:
       run: |
         pwd
         ls
-        cd ./SCRIPTS/
+        cd ./scripts/
         chmod +x build-lean-mt1300.sh
         ./build-lean-mt1300.sh
         

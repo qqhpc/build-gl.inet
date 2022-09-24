@@ -1,4 +1,4 @@
-name: build gl.inet
+name: Build GL-AXT1800 4.X
 
 on:
   repository_dispatch:

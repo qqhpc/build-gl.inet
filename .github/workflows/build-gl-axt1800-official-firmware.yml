@@ -48,11 +48,11 @@ jobs:
         echo "下载gl-inet openwrt源码"
         git clone -b $REPO_BRANCH $REPO_URL /workdir/gl-infra-builder
 
-    - name: Build 
+    - name: Build Firmware
       run: |
         pwd
         ls
-        cd /home/runner/work/build-gl.inet/build-gl.inet/scripts/
+        cd ./scripts/
         chmod +x build-axt1800.sh
         ./build-axt1800.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
         

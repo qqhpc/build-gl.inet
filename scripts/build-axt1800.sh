@@ -12,12 +12,19 @@ if [ ! -n "$ui" ]; then
         ui=true
 fi
 
+echo "当前目录"
+pwd
+
+echo "当前目录内容"
+ls -alh
+
+echo "进入目标目录"
 cd /home/runner/work/build-gl.inet/build-gl.inet/
 
-echo "复制自定义插件源码目录至官方的插件目录"
+echo "复制自定义插件源码至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
-echo "复制插件自定义配置文件官方的配置目录"
+echo "复制插件自定义配置文件至官方的配置目录"
 cp -r *.yml /workdir/gl-infra-builder/profiles
 
 cd /workdir/gl-infra-builder
@@ -38,7 +45,7 @@ echo "更新插件源码"
 echo "克隆glinet私有软件包"
 git clone https://github.com/qqhpc/glinet4.x.git /workdir/gl-infra-builder/glinet
 
-echo "下载安装feeds"
+echo "下载feeds"
 ./scripts/feeds update -a
 
 echo "更新Golang"
@@ -46,6 +53,9 @@ rm -rf feeds/packages/lang/golang
 svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
 
 echo "安装feeds packages"
+./scripts/feeds install -a
+
+echo "安装feeds packages again"
 ./scripts/feeds install -a
 
 echo "生成配置文件"

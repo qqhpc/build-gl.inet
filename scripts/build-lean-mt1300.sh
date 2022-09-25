@@ -36,7 +36,7 @@ echo "安装 feeds again"
 
 echo "下载 config"
 rm -rf .config
-wget 
+wget https://raw.githubusercontent.com/qqhpc/configfiles/main/openwrt/Lean/.config/lean.mt1300.config.txt
 mv lean.mt1300.config.txt .config
 
 echo "下载 dl"

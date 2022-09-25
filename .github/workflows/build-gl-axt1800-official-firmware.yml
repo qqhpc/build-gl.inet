@@ -53,8 +53,8 @@ jobs:
         pwd
         ls
         cd /home/runner/work/build-gl.inet/build-gl.inet/scripts/
-        chmod +x build.sh
-        ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
+        chmod +x build-axt1800.sh
+        ./build-axt1800.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
         
     - name: Organize files
       id: organize

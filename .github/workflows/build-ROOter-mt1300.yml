@@ -54,8 +54,8 @@ jobs:
         pwd
         ls
         cd ./scripts/
-        chmod +x creat-custom-config.sh
-        ./creat-custom-config.sh
+        chmod +x build-rooter-mt1300.sh
+        ./build-rooter-mt1300.sh
 
     - name: Organize files
       id: organize

@@ -2,6 +2,10 @@
 
 # 2022.09.26
 
+pwd
+
+ls -alh
+
 echo "添加 helloworld"
 sed -i "/helloworld/d" "feeds.conf.default" && git clone https://github.com/qqhpc/fw876-helloworld.git ./package/helloworld
 

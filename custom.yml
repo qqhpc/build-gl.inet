@@ -12,9 +12,9 @@ packages:
   - luci-app-openclash
   - dnsmasq-full
   - luci-app-commands
-  - luci-app-wireguard
-  - wireguard
-  - wireguard-tools
+  - openssh-sftp-server
+  - vim
+  - nano
   - luci-app-ttyd
 
 diffconfig: |

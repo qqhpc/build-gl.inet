@@ -53,8 +53,8 @@ jobs:
         pwd
         ls
         cd ./scripts/
-        chmod +x build-axt1800.sh
-        ./build-axt1800.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
+        chmod +x build-axt1800-official-firmware.sh
+        ./build-axt1800-official-firmware.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
         
     - name: Organize files
       id: organize

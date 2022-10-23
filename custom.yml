@@ -6,7 +6,7 @@ feeds:
     branch: master
   - name: openclash
     uri: https://github.com/qqhpc/vernesong-OpenClash.git
-    branch: dev
+    branch: master
 packages:
   - luci-app-ssr-plus
   - luci-app-openclash

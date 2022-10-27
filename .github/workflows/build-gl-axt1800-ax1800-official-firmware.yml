@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
-    - name: update
+    - name: Initialization environment
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
@@ -42,7 +42,7 @@ jobs:
         git config --global user.email "github-actions[bot]@github.com"
         git config --global user.name "github-actions[bot]"
 
-    - name: Get code
+    - name: Clone OpenWRT code
       run: |
         df -hT $PWD
         echo "下载gl-inet openwrt源码"

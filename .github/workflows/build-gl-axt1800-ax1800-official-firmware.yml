@@ -63,7 +63,7 @@ jobs:
         cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
         
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
@@ -83,8 +83,8 @@ jobs:
       id: tag
       if: true && !failure() && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-        echo "::set-output name=status::success"
+        echo "release_tag=${{inputs.device}}.${{ inputs.ui }}.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        echo "status=success" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1

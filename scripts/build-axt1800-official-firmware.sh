@@ -35,7 +35,7 @@ echo "安装feeds packages"
 ./scripts/feeds install -a
 
 echo "安装feeds packages again"
-./scripts/feeds install -a
+./scripts/feeds install -a -f
 
 echo "生成配置文件"
 make defconfig

@@ -13,13 +13,13 @@ cp -r *.yml /workdir/gl-infra-builder/profiles
 cd /workdir/gl-infra-builder
 
 echo "下载4.x对应源码"
-python3 setup.py -c configs/config-wlan-ap.yml
+python3 setup.py -c ./configs/config-wlan-ap.yml
 
 echo "进入目标目录"
-cd wlan-ap/openwrt
+cd ./wlan-ap/openwrt
 
 echo "更新插件源码"
-./scripts/gen_config.py $profile glinet_depends custom
+./scripts/gen_config.py target_wlan_ap-gl-axt1800 glinet_depends custom
 
 echo "克隆glinet私有软件包"
 git clone https://github.com/qqhpc/glinet4.x.git /workdir/gl-infra-builder/glinet
@@ -28,8 +28,8 @@ echo "下载feeds"
 ./scripts/feeds update -a
 
 echo "更新Golang"
-rm -rf feeds/packages/lang/golang
-svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+rm -rf ./feeds/packages/lang/golang
+svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang ./feeds/packages/lang/golang
 
 echo "安装feeds packages"
 ./scripts/feeds install -a

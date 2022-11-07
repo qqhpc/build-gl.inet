@@ -1,0 +1,81 @@
+name: Build GL-AXT1800 Official Firmware
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+env:
+  UPLOAD_BIN_DIR: true
+  TZ: Asia/Shanghai
+  DEVICE_NAME: GL-AXT1800
+  
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Initialization environment
+      run: |
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml -y
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+        git config --global user.email "github-actions[bot]@github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Clone OpenWRT code
+      run: |
+        df -hT $PWD
+        echo "下载gl-inet openwrt源码"
+        git clone https://github.com/gl-inet/gl-infra-builder.git /workdir/gl-infra-builder
+
+    - name: Build Firmware
+      run: |
+        pwd
+        ls
+        cd ./scripts/
+        chmod +x build-axt1800-official-firmware.sh
+        ./build-axt1800-official-firmware.sh
+        
+    - name: Organize files
+      id: organize
+      if: true && !failure() && !cancelled()
+      run: |
+        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/*/*
+        rm -rf packages
+        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+        echo "status=success" >> $GITHUB_OUTPUT
+        
+    - name: Upload firmware directory
+      uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled() && !failure()
+      with:
+        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
+
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: /workdir/gl-infra-builder/wlan-ap/openwrt/bin
+
+    - name: Generate release tag
+      id: tag
+      if: true && !failure() && !cancelled()
+      run: |
+        echo "release_tag=GL-AXT1800.with UI.$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        echo "status=success" >> $GITHUB_OUTPUT
+        
+    - name: Upload firmware to release
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        files: ${{ env.FIRMWARE }}/*

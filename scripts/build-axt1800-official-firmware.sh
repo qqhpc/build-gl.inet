@@ -15,7 +15,7 @@ cd /workdir/gl-infra-builder
 echo "下载4.x对应源码"
 python3 setup.py -c ./configs/config-wlan-ap.yml
 
-echo "进入目标目录"
+echo "进入openwrt目录"
 cd ./wlan-ap/openwrt
 
 echo "更新插件源码"

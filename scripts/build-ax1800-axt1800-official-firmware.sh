@@ -25,7 +25,7 @@ echo "复制自定义插件源码至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
 echo "复制插件自定义配置文件至官方的配置目录"
-cp -r *.yml /workdir/gl-infra-builder/profiles
+cp -r *.yml /workdir/gl-infra-builder/profiles/
 
 cd /workdir/gl-infra-builder
 
@@ -35,6 +35,8 @@ if [[ $profile == *5-4* ]]; then
 else
         python3 setup.py -c configs/config-wlan-ap.yml
 fi
+
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml /workdir/gl-infra-builder/wlan-ap/openwrt/
 
 echo "进入目标目录"
 cd wlan-ap/openwrt

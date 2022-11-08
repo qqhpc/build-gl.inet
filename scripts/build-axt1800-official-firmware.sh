@@ -8,12 +8,14 @@ echo "复制自定义插件源码目录至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
 echo "复制插件自定义配置文件官方的配置目录"
-cp -r *.yml /workdir/gl-infra-builder/profiles
+cp -r *.yml /workdir/gl-infra-builder/profiles/
 
 cd /workdir/gl-infra-builder
 
 echo "下载4.x对应源码"
 python3 setup.py -c ./configs/config-wlan-ap.yml
+
+cp -r *.yml /workdir/gl-infra-builder/wlan-ap/openwrt/
 
 echo "进入openwrt目录"
 cd ./wlan-ap/openwrt

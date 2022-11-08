@@ -15,7 +15,7 @@ cd /workdir/gl-infra-builder
 echo "下载4.x对应源码"
 python3 setup.py -c ./configs/config-wlan-ap.yml
 
-cp -r *.yml /workdir/gl-infra-builder/wlan-ap/openwrt/
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml /workdir/gl-infra-builder/wlan-ap/openwrt/
 
 echo "进入openwrt目录"
 cd ./wlan-ap/openwrt

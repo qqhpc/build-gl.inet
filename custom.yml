@@ -7,9 +7,13 @@ feeds:
   - name: openclash
     uri: https://github.com/qqhpc/vernesong-OpenClash.git
     branch: master
+  - name: passwall
+    uri: https://github.com/qqhpc/xiaorouji-openwrt-passwall.git
+    branch: packages    
 packages:
   - luci-app-mwan3
   - luci-app-ssr-plus
+  - luci-app-passwall  
   - luci-app-openclash
   - dnsmasq-full
   - luci-app-commands

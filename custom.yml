@@ -1,9 +1,6 @@
 feeds:
   - name: custom
     path: ../feeds_dir/custom
-  - name: helloworld
-    uri: https://github.com/qqhpc/fw876-helloworld.git
-    branch: master
   - name: openclash
     uri: https://github.com/qqhpc/vernesong-OpenClash.git
     branch: master
@@ -12,7 +9,6 @@ feeds:
     branch: packages    
 packages:
   - luci-app-mwan3
-  - luci-app-ssr-plus
   - luci-app-passwall  
   - luci-app-openclash
   - dnsmasq-full

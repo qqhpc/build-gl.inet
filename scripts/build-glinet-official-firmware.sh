@@ -1,8 +1,12 @@
 #!/bin/bash
 
-profile=$2
+CRTDIR=$(pwd)
 
+base=$1
+profile=$2
 ui=$3
+
+echo $base
 
 if [ ! -n "$profile" ]; then
 	profile=target_wlan_ap-gl-ax1800

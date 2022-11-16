@@ -1,4 +1,4 @@
-name: Build GL-AXT1800/AX1800 Official Firmware
+name: Build GL.iNet Official Firmware
 
 on:
   workflow_dispatch:
@@ -13,9 +13,13 @@ on:
         - target_wlan_ap-gl-axt1800
         - target_wlan_ap-gl-ax1800-5-4
         - target_wlan_ap-gl-axt1800-5-4
-        
+        - target_ipq40xx_gl-a1300
+        - target_mt7981_gl-mt2500
+        - target_siflower_gl-sf1200
+        - target_siflower_gl-sft1200
+
       ui:
-        description: '是否包含官方UI'
+        description: '是否包含官方UI (目前支持IPQ60XX系列和MT2500)'
         required: false
         type: boolean
 env:
@@ -42,10 +46,10 @@ jobs:
         git config --global user.email "github-actions[bot]@github.com"
         git config --global user.name "github-actions[bot]"
 
-    - name: Clone OpenWRT code
+    - name: Clone GL.iNet OpenWRT code
       run: |
         df -hT $PWD
-        echo "下载gl-inet openwrt源码"
+        echo "下载gl-inet的openwrt源码"
         git clone -b $REPO_BRANCH $REPO_URL /workdir/gl-infra-builder
 
     - name: Build Firmware
@@ -53,8 +57,8 @@ jobs:
         pwd
         ls
         cd ./scripts/
-        chmod +x build-ax1800-axt1800-official-firmware.sh
-        ./build-ax1800-axt1800-official-firmware.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
+        chmod +x build-glinet-official-firmware.sh
+        ./build-glinet-official-firmware.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
         
     - name: Organize files
       id: organize

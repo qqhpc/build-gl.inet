@@ -25,6 +25,8 @@ echo "Start..."
 
 #clone source tree 
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
+ln -sf /home/runner/gl-infra-builder /workdir/gl-infra-builder
+ls /workdir/gl-infra-builder
 cp -r custom/  $base/gl-infra-builder/feeds/custom/
 cp -r *.yml $base/gl-infra-builder/profiles
 cd $base/gl-infra-builder

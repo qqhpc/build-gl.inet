@@ -6,6 +6,7 @@ base=$1
 profile=$2
 ui=$3
 
+echo"base目录是"
 echo $base
 
 if [ ! -e "$base" ]; then

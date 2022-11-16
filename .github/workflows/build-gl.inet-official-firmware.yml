@@ -53,8 +53,6 @@ jobs:
         cd ./scripts/
         chmod +x build-glinet-official-firmware.sh
         ./build-glinet-official-firmware.sh ~ ${{ inputs.device }} ${{ inputs.ui }}
-        ln -sf $base/gl-infra-builder /workdir/gl-infra-builder
-        ls /workdir/gl-infra-builder
         
     - name: Organize files
       id: organize

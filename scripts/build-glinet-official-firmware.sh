@@ -6,7 +6,7 @@ base=$1
 profile=$2
 ui=$3
 
-echo"base目录是"
+echo "base目录是"
 echo $base
 
 if [ ! -e "$base" ]; then
@@ -35,6 +35,8 @@ ls -alh
 
 echo "克隆 glinet 源码"
 git clone https://github.com/qqhpc/gl-inet-gl-infra-builder.git $base/gl-infra-builder
+
+ln -sf /home/runner/gl-infra-builder /workdir/gl-infra-builder
 
 echo "将软件源码和依赖复制进目的目录"
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/

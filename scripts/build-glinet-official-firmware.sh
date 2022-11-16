@@ -37,10 +37,10 @@ echo "克隆 glinet 源码"
 git clone https://github.com/qqhpc/gl-inet-gl-infra-builder.git $base/gl-infra-builder
 
 echo "将软件源码和依赖复制进目的目录"
-cp -r custom/  $base/gl-infra-builder/feeds/custom/
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
 
 echo "将自定义配置文件复制进目标目录"
-cp -r *.yml $base/gl-infra-builder/profiles
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml $base/gl-infra-builder/profiles
 
 cd $base/gl-infra-builder
 #cd /workdir/gl-infra-builder

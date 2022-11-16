@@ -43,6 +43,8 @@ cp -r *.yml $base/gl-infra-builder/profiles
 
 cd $base/gl-infra-builder
 #cd /workdir/gl-infra-builder
+echo "当前目录"
+pwd
 
 function build_firmware(){
     cd ~/openwrt

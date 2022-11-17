@@ -29,10 +29,11 @@ ln -sf /home/runner/gl-infra-builder  /workdir/gl-infra-builder
 pwd
 ls
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
-cp -r /home/runner/work/build-gl.inet/build-gl.inet/*.yml $base/gl-infra-builder/profiles
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml $base/gl-infra-builder/profiles/
 
 #cd $base/gl-infra-builder
 cd /workdir/gl-infra-builder/
+ls
 
 
 function build_firmware(){

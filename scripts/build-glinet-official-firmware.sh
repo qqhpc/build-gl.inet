@@ -47,7 +47,6 @@ cd /workdir/gl-infra-builder/
 echo "/workdir/gl-infra-builder里的内容"
 ls
 
-
 function build_firmware(){
     cd ~/openwrt
     need_gl_ui=$1

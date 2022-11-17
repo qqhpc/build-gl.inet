@@ -5,6 +5,10 @@ profile=$2
 ui=$3
 echo "base的目录"
 echo $base
+echo "$2是："
+echo $2
+echo "$3是："
+echo $3
 
 if [ ! -e "$base" ]; then
 	echo "Please enter base folder"
@@ -40,11 +44,15 @@ echo "开始复制自定义插件的源码和配置文件"
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml $base/gl-infra-builder/profiles/
 
+echo "检查复制结果"
+ls -lh /workdir/gl-infra-builder/feeds/custom/
+ls -lh /workdir/gl-infra-builder/profiles/custom.yml
+
 echo "进入目录：/workdir/gl-infra-builder"
 #cd $base/gl-infra-builder
 cd /workdir/gl-infra-builder/
 
-echo "/workdir/gl-infra-builder里的内容"
+echo "目录/workdir/gl-infra-builder里的内容"
 ls
 
 function build_firmware(){
@@ -55,7 +63,7 @@ function build_firmware(){
     rm -rf feeds/packages/lang/golang
     svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
     #install feed 
-    ./scripts/feeds update -a && ./scripts/feeds install -a && ./scripts/feeds install -a -f && make defconfig
+    echo "开始下载feeds" && ./scripts/feeds update -a && echo "开始安装feeds" && ./scripts/feeds install -a && echo "再次安装feeds" && ./scripts/feeds install -a -f && make defconfig
     #build 
     if [[ $need_gl_ui == true  ]]; then 
         make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet/$ui_path/ V=s

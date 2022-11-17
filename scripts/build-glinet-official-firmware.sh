@@ -3,7 +3,9 @@ CRTDIR=$(pwd)
 base=$1
 profile=$2
 ui=$3
+echo "base的目录"
 echo $base
+
 if [ ! -e "$base" ]; then
 	echo "Please enter base folder"
 	exit 1
@@ -21,18 +23,28 @@ fi
 if [ ! -n "$ui" ]; then
         ui=true
 fi
-echo "Start..."
 
+echo "开始下载源码..."
 #clone source tree 
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
+
+echo "创建软链接至/workdir/gl-infra-builder"
 ln -sf /home/runner/gl-infra-builder  /workdir/gl-infra-builder
+
+echo "当前目录"
 pwd
+echo "当前目录的内容"
 ls
+
+echo "开始复制自定义插件的源码和配置文件"
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
 cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml $base/gl-infra-builder/profiles/
 
+echo "进入目录：/workdir/gl-infra-builder"
 #cd $base/gl-infra-builder
 cd /workdir/gl-infra-builder/
+
+echo "/workdir/gl-infra-builder里的内容"
 ls
 
 

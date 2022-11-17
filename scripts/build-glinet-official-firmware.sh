@@ -3,13 +3,7 @@ CRTDIR=$(pwd)
 base=$1
 profile=$2
 ui=$3
-echo "base的目录"
 echo $base
-echo "$2是："
-echo $2
-echo "$3是："
-echo $3
-
 if [ ! -e "$base" ]; then
 	echo "Please enter base folder"
 	exit 1
@@ -27,33 +21,15 @@ fi
 if [ ! -n "$ui" ]; then
         ui=true
 fi
+echo "Start..."
 
-echo "开始下载源码..."
 #clone source tree 
 git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
-
-echo "创建软链接至/workdir/gl-infra-builder"
 ln -sf /home/runner/gl-infra-builder  /workdir/gl-infra-builder
+cp -r custom/  $base/gl-infra-builder/feeds/custom/
+cp -r *.yml $base/gl-infra-builder/profiles/
+cd $base/gl-infra-builder
 
-echo "当前目录"
-pwd
-echo "当前目录的内容"
-ls
-
-echo "开始复制自定义插件的源码和配置文件"
-cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
-cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml $base/gl-infra-builder/profiles/
-
-echo "检查复制结果"
-ls -lh /workdir/gl-infra-builder/feeds/custom/
-ls -lh /workdir/gl-infra-builder/profiles/custom.yml
-
-echo "进入目录：/workdir/gl-infra-builder"
-#cd $base/gl-infra-builder
-cd /workdir/gl-infra-builder/
-
-echo "目录/workdir/gl-infra-builder里的内容"
-ls
 
 function build_firmware(){
     cd ~/openwrt
@@ -63,7 +39,7 @@ function build_firmware(){
     rm -rf feeds/packages/lang/golang
     svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
     #install feed 
-    echo "开始下载feeds" && ./scripts/feeds update -a && echo "开始安装feeds" && ./scripts/feeds install -a && echo "再次安装feeds" && ./scripts/feeds install -a -f && make defconfig
+    ./scripts/feeds update -a && ./scripts/feeds install -a && make defconfig
     #build 
     if [[ $need_gl_ui == true  ]]; then 
         make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet/$ui_path/ V=s
@@ -72,6 +48,14 @@ function build_firmware(){
     fi
 }
 
+function copy_file(){
+	patch=$1
+	mkdir ~/firmware
+	mkdir ~/packages
+	cd $patch
+	rm -rf packages
+	cp -rf ./* ~/firmware
+}
 
 case $profile in 
     target_wlan_ap-gl-ax1800|\

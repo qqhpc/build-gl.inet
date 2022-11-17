@@ -44,7 +44,7 @@ function build_firmware(){
     rm -rf feeds/packages/lang/golang
     svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
     #install feed 
-    ./scripts/feeds update -a && ./scripts/feeds install -a && make defconfig
+    ./scripts/feeds update -a && ./scripts/feeds install -a && ./scripts/feeds install -a -f && make defconfig
     #build 
     if [[ $need_gl_ui == true  ]]; then 
         make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet/$ui_path/ V=s

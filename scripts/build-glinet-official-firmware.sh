@@ -28,9 +28,11 @@ git clone https://github.com/gl-inet/gl-infra-builder.git $base/gl-infra-builder
 ln -sf /home/runner/gl-infra-builder  /workdir/gl-infra-builder
 pwd
 ls
-cp -r custom/  $base/gl-infra-builder/feeds/custom/
-cp -r *.yml $base/gl-infra-builder/profiles
-cd $base/gl-infra-builder
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom/  $base/gl-infra-builder/feeds/custom/
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/*.yml $base/gl-infra-builder/profiles
+
+#cd $base/gl-infra-builder
+cd /workdir/gl-infra-builder/
 
 
 function build_firmware(){

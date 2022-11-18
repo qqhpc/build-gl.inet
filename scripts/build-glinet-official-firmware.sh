@@ -18,6 +18,8 @@ pwd
 echo "当前目录内容"
 ls -alh
 
+git clone https://github.com/gl-inet/gl-infra-builder.git /workdir/gl-infra-builder
+
 echo "进入目标目录"
 cd /home/runner/work/build-gl.inet/build-gl.inet/
 

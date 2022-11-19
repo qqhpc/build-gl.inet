@@ -11,6 +11,7 @@ packages:
   - luci-app-mwan3
   - luci-app-ssr-plus  
   - luci-app-openclash
+  - luci-app-passwall
   - dnsmasq-full
   - luci-app-commands
   - openssh-sftp-server

@@ -26,6 +26,11 @@ cd /home/runner/work/build-gl.inet/build-gl.inet/
 echo "复制自定义插件源码至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
+git clone -b packages https://github.com/qqhpc/xiaorouji-openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/passwall
+git clone -b luci https://github.com/qqhpc/xiaorouji-openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
+cp -r /workdir/gl-infra-builder/feeds/custom/luci-app-passwall/luci-app-passwall /workdir/gl-infra-builder/feeds/custom/passwall/
+rm -rf /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
+
 echo "复制插件自定义配置文件至官方的配置目录"
 cp -r *.yml /workdir/gl-infra-builder/profiles/
 

@@ -27,17 +27,17 @@ echo "复制自定义插件源码至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
 echo "添加passwall"
-git clone -b packages https://github.com/qqhpc/xiaorouji-openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/passwall
-git clone -b luci https://github.com/qqhpc/xiaorouji-openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
+git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/passwall
+git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
 cp -r /workdir/gl-infra-builder/feeds/custom/luci-app-passwall/luci-app-passwall /workdir/gl-infra-builder/feeds/custom/passwall/
 rm -rf /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
 
 echo "添加passwall2"
-git clone https://github.com/qqhpc/xiaorouji-openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
+git clone https://github.com/xiaorouji/openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
 cp -r /workdir/gl-infra-builder/feeds/custom/passwall2/luci-app-passwall2 /workdir/gl-infra-builder/feeds/custom/ && rm -rf /workdir/gl-infra-builder/feeds/custom/passwall2
 
 echo "添加luci-app-adguardhome"
-git clone https://github.com/qqhpc/rufengsuixing-luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
 
 echo "复制插件自定义配置文件至官方的配置目录"
 cp -r *.yml /workdir/gl-infra-builder/profiles/

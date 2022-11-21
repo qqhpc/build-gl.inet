@@ -43,7 +43,7 @@ else
         python3 setup.py -c configs/config-wlan-ap.yml
 fi
 
-cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml /workdir/gl-infra-builder/wlan-ap/openwrt/
+cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml /workdir/gl-infra-builder/wlan-ap/openwrt/profiles/
 
 echo "进入目标目录"
 cd wlan-ap/openwrt

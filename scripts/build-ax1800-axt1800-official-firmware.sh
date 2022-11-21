@@ -18,6 +18,7 @@ pwd
 echo "当前目录内容"
 ls -alh
 
+echo "下载glinet源码"
 git clone https://github.com/gl-inet/gl-infra-builder.git /workdir/gl-infra-builder
 
 echo "进入目标目录"
@@ -26,15 +27,15 @@ cd /home/runner/work/build-gl.inet/build-gl.inet/
 echo "复制自定义插件源码至官方的插件目录"
 cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 
-echo "添加passwall"
-git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/passwall
-git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
-cp -r /workdir/gl-infra-builder/feeds/custom/luci-app-passwall/luci-app-passwall /workdir/gl-infra-builder/feeds/custom/passwall/
-rm -rf /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
+#echo "添加passwall"
+#git clone -b packages https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/passwall
+#git clone -b luci https://github.com/xiaorouji/openwrt-passwall.git /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
+#cp -r /workdir/gl-infra-builder/feeds/custom/luci-app-passwall/luci-app-passwall /workdir/gl-infra-builder/feeds/custom/passwall/
+#rm -rf /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
 
-echo "添加passwall2"
-git clone https://github.com/xiaorouji/openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
-cp -r /workdir/gl-infra-builder/feeds/custom/passwall2/luci-app-passwall2 /workdir/gl-infra-builder/feeds/custom/ && rm -rf /workdir/gl-infra-builder/feeds/custom/passwall2
+#echo "添加passwall2"
+#git clone https://github.com/xiaorouji/openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
+#cp -r /workdir/gl-infra-builder/feeds/custom/passwall2/luci-app-passwall2 /workdir/gl-infra-builder/feeds/custom/ && rm -rf /workdir/gl-infra-builder/feeds/custom/passwall2
 
 echo "添加luci-app-adguardhome"
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
@@ -46,9 +47,9 @@ cd /workdir/gl-infra-builder
 
 echo "选择内核版本并下载对应源码"
 if [[ $profile == *5-4* ]]; then
-        python3 setup.py -c configs/config-wlan-ap-5.4.yml
+        python3 setup.py -c ./configs/config-wlan-ap-5.4.yml
 else
-        python3 setup.py -c configs/config-wlan-ap.yml
+        python3 setup.py -c ./configs/config-wlan-ap.yml
 fi
 
 echo "进入openwrt目录"
@@ -70,7 +71,7 @@ svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang fe
 echo "安装feeds packages"
 ./scripts/feeds install -a
 
-echo "安装feeds packages again"
+echo "安装feeds packages"
 ./scripts/feeds install -a -f
 
 echo "生成配置文件"

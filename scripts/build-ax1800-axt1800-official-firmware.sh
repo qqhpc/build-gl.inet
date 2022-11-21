@@ -32,6 +32,10 @@ git clone -b luci https://github.com/qqhpc/xiaorouji-openwrt-passwall.git /workd
 cp -r /workdir/gl-infra-builder/feeds/custom/luci-app-passwall/luci-app-passwall /workdir/gl-infra-builder/feeds/custom/passwall/
 rm -rf /workdir/gl-infra-builder/feeds/custom/luci-app-passwall
 
+echo "添加passwall2"
+git clone https://github.com/qqhpc/xiaorouji-openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
+cp -r /workdir/gl-infra-builder/feeds/custom/passwall2/luci-app-passwall2 /workdir/gl-infra-builder/feeds/custom/ && rm -rf /workdir/gl-infra-builder/feeds/custom/passwall2
+
 echo "添加luci-app-adguardhome"
 git clone https://github.com/qqhpc/rufengsuixing-luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
 

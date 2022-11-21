@@ -43,16 +43,14 @@ else
         python3 setup.py -c configs/config-wlan-ap.yml
 fi
 
-cp -r /home/runner/work/build-gl.inet/build-gl.inet/custom.yml /workdir/gl-infra-builder/wlan-ap/openwrt/profiles/
-
-echo "进入目标目录"
+echo "进入openwrt目录"
 cd wlan-ap/openwrt
 
 echo "更新插件源码"
 ./scripts/gen_config.py $profile glinet_depends custom
 
 echo "克隆glinet私有软件包"
-git clone https://github.com/qqhpc/gl-inet-glinet4.x.git /workdir/gl-infra-builder/glinet
+git clone https://github.com/gl-inet/glinet4.x.git /workdir/gl-infra-builder/glinet
 
 echo "下载feeds"
 ./scripts/feeds update -a
@@ -65,7 +63,7 @@ echo "安装feeds packages"
 ./scripts/feeds install -a
 
 echo "安装feeds packages again"
-./scripts/feeds install -a
+./scripts/feeds install -a -f
 
 echo "生成配置文件"
 make defconfig
@@ -76,4 +74,3 @@ if [[ $ui == true  ]]; then
 else
 	make -j$(expr $(nproc) + 1)  V=s
 fi
-

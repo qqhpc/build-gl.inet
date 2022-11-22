@@ -37,8 +37,8 @@ cp -r custom/  /workdir/gl-infra-builder/feeds/custom/
 #git clone https://github.com/xiaorouji/openwrt-passwall2.git /workdir/gl-infra-builder/feeds/custom/passwall2
 #cp -r /workdir/gl-infra-builder/feeds/custom/passwall2/luci-app-passwall2 /workdir/gl-infra-builder/feeds/custom/ && rm -rf /workdir/gl-infra-builder/feeds/custom/passwall2
 
-echo "添加luci-app-adguardhome"
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
+#echo "添加luci-app-adguardhome"
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome.git /workdir/gl-infra-builder/feeds/custom/luci-app-adguardhome
 
 echo "复制插件自定义配置文件至官方的配置目录"
 cp -r *.yml /workdir/gl-infra-builder/profiles/
